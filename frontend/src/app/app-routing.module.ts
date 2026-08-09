@@ -24,8 +24,7 @@ const routes: Routes = [
   },
   {
     path:'',
-    redirectTo:'allProperties',
-    pathMatch:'full'
+    component:LandingPageComponent,
   },
   {
     path:'allProperties',

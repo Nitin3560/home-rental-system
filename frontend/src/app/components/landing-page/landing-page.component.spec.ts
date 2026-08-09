@@ -6,6 +6,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 
 import { LandingPageComponent } from './landing-page.component';
 
@@ -23,6 +28,11 @@ describe('LandingPageComponent', () => {
         MatSelectModule,
         MatAutocompleteModule,
         MatRadioModule,
+        MatButtonModule,
+        MatCardModule,
+        MatChipsModule,
+        MatIconModule,
+        RouterModule.forRoot([]),
       ],
       declarations: [ LandingPageComponent ]
     })
