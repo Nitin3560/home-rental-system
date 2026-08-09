@@ -1,15 +1,11 @@
 <mat-toolbar class="app-header">
-  <a class="brand" [routerLink]="'/'">
-    <mat-icon>home</mat-icon>
-    <span>Find Me Home</span>
-  </a>
+  <a class="brand" [routerLink]="'/'">Find Me Home</a>
 
   <nav class="nav-links">
-    <a mat-button [routerLink]="'/allProperties'">Rent</a>
-    <a mat-button [routerLink]="'/'">PG / Hostel</a>
     @if (role === 'owner') {
       <a mat-button [routerLink]="'/myProperties'">My Properties</a>
     }
+    <a mat-button [routerLink]="'/allProperties'">All properties</a>
     @if (id) {
       <a mat-button [routerLink]="['/my-chats', id]">My Chats</a>
     }
@@ -17,10 +13,7 @@
       <a mat-button [routerLink]="'/profile'">Profile</a>
     }
     @if (role === 'owner') {
-      <a mat-button [routerLink]="'/addProperty'">List Property</a>
-    }
-    @if (role !== 'owner') {
-      <a mat-button [routerLink]="'/addProperty'">List Property</a>
+      <a mat-button [routerLink]="'/addProperty'">Post Your Property</a>
     }
   </nav>
 
@@ -28,10 +21,10 @@
 
   <div class="auth-actions">
     @if (!id) {
-      <a mat-stroked-button [routerLink]="'/login'">Log in</a>
+      <a mat-stroked-button [routerLink]="'/login'">Login</a>
     }
     @if (!id) {
-      <a mat-flat-button [routerLink]="'/signUp'">Sign up</a>
+      <a mat-flat-button [routerLink]="'/signUp'">Sign-up</a>
     }
     @if (id) {
       <button mat-flat-button (click)="logoutFromHeader()">Logout</button>

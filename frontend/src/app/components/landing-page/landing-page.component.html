@@ -1,198 +1,151 @@
 <section class="homepage-hero">
-  <div class="hero-shell">
-    <div class="hero-copy-block">
-      <h1>Find a place that feels like home.</h1>
-      <p>Simple. Transparent. Direct. Homes, rooms and PGs that fit you.</p>
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <p class="eyebrow">Rental marketplace for students, families, and professionals</p>
+      <h1>Find Me Home</h1>
+      <p class="hero-copy">
+        Discover verified PGs, hostels, and rental homes across Maharashtra with clear pricing,
+        useful amenities, and direct owner conversations.
+      </p>
+
+      <form class="search-panel" aria-label="Property search">
+        <mat-radio-group class="type-toggle" aria-label="Property type">
+          <mat-radio-button value="home">Home</mat-radio-button>
+          <mat-radio-button value="pg" checked>PG/Hostel</mat-radio-button>
+        </mat-radio-group>
+
+        <div class="search-row">
+          <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <input
+              matInput
+              type="text"
+              id="typeahead-focus"
+              [(ngModel)]="model"
+              name="city"
+              (ngModelChange)="filterCities()"
+              [matAutocomplete]="cityAuto"
+              />
+            <mat-autocomplete #cityAuto="matAutocomplete">
+              @for (city of filteredCities; track city) {
+                <mat-option [value]="city">{{ city }}</mat-option>
+              }
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Tenant preference</mat-label>
+            <mat-select [(ngModel)]="selectedValue" name="tenantType">
+              @for (value of dropdownValues; track value) {
+                <mat-option [value]="value">{{ value }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Room sharing</mat-label>
+            <mat-select [(ngModel)]="selectedValue2" name="roomType">
+              @for (value of dropdownValues2; track value) {
+                <mat-option [value]="value">{{ value }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <a mat-flat-button class="search-button" routerLink="/allProperties">
+            <mat-icon>search</mat-icon>
+            Browse
+          </a>
+        </div>
+      </form>
+
+      <div class="hero-stats" aria-label="Marketplace highlights">
+        @for (stat of stats; track stat.label) {
+          <div>
+            <strong>{{ stat.value }}</strong>
+            <span>{{ stat.label }}</span>
+          </div>
+        }
+      </div>
     </div>
-    <div class="hero-image" aria-hidden="true"></div>
-
-    <form class="search-panel" aria-label="Property search">
-      <mat-radio-group class="search-tabs" aria-label="Property type">
-        <mat-radio-button value="home" checked>
-          <mat-icon>home</mat-icon>
-          Home
-        </mat-radio-button>
-        <mat-radio-button value="pg">
-          <mat-icon>bed</mat-icon>
-          PG / Hostel
-        </mat-radio-button>
-      </mat-radio-group>
-
-      <div class="search-main-row">
-        <mat-form-field appearance="outline">
-          <mat-label>Search city, area or landmark</mat-label>
-          <mat-icon matPrefix>search</mat-icon>
-          <input
-            matInput
-            type="text"
-            id="typeahead-focus"
-            [(ngModel)]="model"
-            name="city"
-            (ngModelChange)="filterCities()"
-            [matAutocomplete]="cityAuto"
-            />
-          <mat-autocomplete #cityAuto="matAutocomplete">
-            @for (city of filteredCities; track city) {
-              <mat-option [value]="city">{{ city }}</mat-option>
-            }
-          </mat-autocomplete>
-        </mat-form-field>
-
-        <a mat-flat-button class="search-button" routerLink="/allProperties">Search</a>
-      </div>
-
-      <div class="search-filter-row">
-        <mat-form-field appearance="outline">
-          <mat-icon matPrefix>person_outline</mat-icon>
-          <mat-label>For anyone</mat-label>
-          <mat-select [(ngModel)]="selectedValue" name="tenantType">
-            @for (value of dropdownValues; track value) {
-              <mat-option [value]="value">{{ value }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-icon matPrefix>bed</mat-icon>
-          <mat-label>Room type</mat-label>
-          <mat-select [(ngModel)]="selectedValue2" name="roomType">
-            @for (value of dropdownValues2; track value) {
-              <mat-option [value]="value">{{ value }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-icon matPrefix>currency_rupee</mat-icon>
-          <mat-label>Budget</mat-label>
-          <mat-select name="budget" ngModel="Any budget">
-            <mat-option value="Any budget">Any budget</mat-option>
-            <mat-option value="Under Rs 8,000">Under Rs 8,000</mat-option>
-            <mat-option value="Under Rs 15,000">Under Rs 15,000</mat-option>
-            <mat-option value="Under Rs 25,000">Under Rs 25,000</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </form>
   </div>
 </section>
 
-<main class="home-main">
-  <section class="home-section">
-    <div class="section-heading">
-      <h2>Recommended properties</h2>
-      <a mat-button routerLink="/allProperties">
-        View all
-        <mat-icon>arrow_forward</mat-icon>
-      </a>
-    </div>
+<section class="section featured-section">
+  <div class="section-heading">
+    <p class="eyebrow">Featured stays</p>
+    <h2>Fresh listings worth checking first</h2>
+    <a mat-button routerLink="/allProperties">
+      View all
+      <mat-icon>arrow_forward</mat-icon>
+    </a>
+  </div>
 
-    <div class="recommended-grid">
-      @for (property of featuredProperties; track property.name) {
-        <mat-card class="recommended-card">
-          <div class="card-image-wrap">
-            <img mat-card-image [src]="property.image" [alt]="property.name">
-            <span class="property-badge">{{ property.type }}</span>
-            <button mat-icon-button type="button" aria-label="Save property">
-              <mat-icon>favorite_border</mat-icon>
-            </button>
-          </div>
-          <mat-card-content>
-            <h3>{{ property.name }}</h3>
-            <p class="location"><mat-icon>location_on</mat-icon>{{ property.location }}</p>
-            <p class="meta">{{ property.room }} <span></span> {{ property.tenant }}</p>
-            <mat-chip-set aria-label="Property amenities">
-              @for (tag of property.tags; track tag) {
-                <mat-chip>{{ tag }}</mat-chip>
-              }
-            </mat-chip-set>
-            <p class="rent"><strong>{{ property.rent }}</strong> <span>/ month</span></p>
-            <p class="deposit">{{ property.deposit }}</p>
-          </mat-card-content>
-        </mat-card>
-      }
-    </div>
-  </section>
-
-  <section class="home-section compact-section">
-    <h2>Browse by need</h2>
-    <div class="type-grid">
-      @for (type of propertyTypes; track type.title) {
-        <a class="type-tile" routerLink="/allProperties">
-          <mat-icon>{{ type.icon }}</mat-icon>
-          <span>{{ type.title }}</span>
-          <mat-icon>chevron_right</mat-icon>
-        </a>
-      }
-    </div>
-  </section>
-
-  <section class="home-section compact-section">
-    <h2>Popular cities</h2>
-    <div class="city-grid">
-      @for (city of popularCities; track city.name) {
-        <a class="city-tile" routerLink="/allProperties">
-          <img [src]="city.image" [alt]="city.name">
-          <span>{{ city.name }}</span>
-        </a>
-      }
-    </div>
-    <div class="center-action">
-      <a mat-stroked-button routerLink="/allProperties">
-        View all cities
-        <mat-icon>arrow_forward</mat-icon>
-      </a>
-    </div>
-  </section>
-
-  <section class="owner-cta">
-    <div>
-      <h2>Have a property to rent?</h2>
-      <p>List your property and connect directly with people looking for a home or PG.</p>
-      <a mat-flat-button routerLink="/addProperty">List your property</a>
-    </div>
-    <div class="line-house" aria-hidden="true">
-      <mat-icon>holiday_village</mat-icon>
-    </div>
-  </section>
-
-  <section class="home-section compact-section">
-    <h2>Why Find Me Home?</h2>
-    <div class="why-grid">
-      @for (stat of stats; track stat.title) {
-        <article class="why-item">
-          <span><mat-icon>{{ stat.icon }}</mat-icon></span>
-          <div>
-            <h3>{{ stat.title }}</h3>
-            <p>{{ stat.detail }}</p>
-          </div>
-        </article>
-      }
-    </div>
-  </section>
-
-  <section class="home-section compact-section">
-    <h2>What renters say</h2>
-    <div class="testimonial-row">
-      <button mat-icon-button type="button" aria-label="Previous testimonial">
-        <mat-icon>chevron_left</mat-icon>
-      </button>
-      <div class="testimonial-grid">
-        @for (testimonial of testimonials; track testimonial.name) {
-          <article class="testimonial-card">
-            <p class="stars">*****</p>
-            <p>{{ testimonial.quote }}</p>
+  <div class="property-grid">
+    @for (property of featuredProperties; track property.name) {
+      <mat-card class="featured-card">
+        <img mat-card-image [src]="property.image" [alt]="property.name">
+        <mat-card-content>
+          <div class="card-title-row">
             <div>
-              <span class="avatar">{{ testimonial.name.charAt(0) }}</span>
-              <strong>{{ testimonial.name }}</strong>
-              <small>{{ testimonial.city }}</small>
+              <h3>{{ property.name }}</h3>
+              <p>{{ property.location }}</p>
             </div>
-          </article>
-        }
-      </div>
-      <button mat-icon-button type="button" aria-label="Next testimonial">
-        <mat-icon>chevron_right</mat-icon>
-      </button>
-    </div>
-  </section>
-</main>
+            <strong>{{ property.rent }}</strong>
+          </div>
+          <mat-chip-set aria-label="Property amenities">
+            @for (tag of property.tags; track tag) {
+              <mat-chip>{{ tag }}</mat-chip>
+            }
+          </mat-chip-set>
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+</section>
+
+<section class="section browse-section">
+  <div class="section-heading">
+    <p class="eyebrow">Browse by type</p>
+    <h2>Choose the stay that fits your next move</h2>
+  </div>
+
+  <div class="type-grid">
+    @for (type of propertyTypes; track type.title) {
+      <article class="type-tile">
+        <mat-icon>apartment</mat-icon>
+        <h3>{{ type.title }}</h3>
+        <p>{{ type.detail }}</p>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="section split-section">
+  <div>
+    <p class="eyebrow">How it works</p>
+    <h2>From search to owner chat in minutes</h2>
+  </div>
+
+  <div class="steps">
+    @for (step of steps; track step.title; let index = $index) {
+      <article class="step">
+        <span>{{ index + 1 }}</span>
+        <div>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.detail }}</p>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="cta-section">
+  <div>
+    <p class="eyebrow">Ready to list?</p>
+    <h2>Owners can publish rooms with photos, rules, and amenities.</h2>
+  </div>
+  <a mat-flat-button routerLink="/addProperty">
+    <mat-icon>add_home</mat-icon>
+    Post property
+  </a>
+</section>

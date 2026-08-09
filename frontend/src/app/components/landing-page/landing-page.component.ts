@@ -63,79 +63,44 @@ export class LandingPageComponent {
   selectedValue2 = 'Single';
 
   stats = [
-    { icon: 'chat_bubble_outline', title: 'Direct talk with owners', detail: 'Chat directly with verified property owners. No middlemen.' },
-    { icon: 'verified_user', title: 'Verified listings', detail: 'Genuine listings with clear details and pricing.' },
-    { icon: 'tune', title: 'Filter what matters', detail: 'Find places by room type, budget, location and more.' },
+    { value: '250+', label: 'verified rooms' },
+    { value: '35+', label: 'Maharashtra cities' },
+    { value: '24 hr', label: 'owner response window' },
   ];
 
   featuredProperties = [
     {
-      name: 'Urban Nest PG',
-      location: 'Pune, Maharashtra',
-      rent: 'Rs 8,500',
-      deposit: 'Deposit Rs 15,000',
+      name: 'Sunrise PG, Pune',
+      location: 'Kothrud, Pune',
+      rent: 'Rs 7,500/mo',
       image: 'assets/h1.jpg',
-      type: 'PG / Hostel',
-      room: 'Single Room',
-      tenant: 'Female',
-      tags: ['WiFi', 'Laundry', 'Food'],
+      tags: ['Wifi', 'Meals', 'Single sharing'],
     },
     {
-      name: 'Green View Home',
-      location: 'Mumbai, Maharashtra',
-      rent: 'Rs 22,000',
-      deposit: 'Deposit Rs 50,000',
+      name: 'Urban Nest Home',
+      location: 'Andheri, Mumbai',
+      rent: 'Rs 18,000/mo',
       image: 'assets/h2.jpg',
-      type: 'Home',
-      room: '2 BHK',
-      tenant: 'Anyone',
-      tags: ['Parking', 'AC', 'Power Backup'],
+      tags: ['2BHK', 'Family ready', 'Parking'],
     },
     {
-      name: 'Comfort Stay PG',
-      location: 'Thane, Maharashtra',
-      rent: 'Rs 7,000',
-      deposit: 'Deposit Rs 10,000',
+      name: 'Campus Corner Hostel',
+      location: 'Hinjewadi, Pune',
+      rent: 'Rs 6,800/mo',
       image: 'assets/h3.jpg',
-      type: 'PG / Hostel',
-      room: 'Double Sharing',
-      tenant: 'Male',
-      tags: ['WiFi', 'Food', 'Housekeeping'],
-    },
-    {
-      name: 'City Corner Apartment',
-      location: 'Navi Mumbai, Maharashtra',
-      rent: 'Rs 18,000',
-      deposit: 'Deposit Rs 40,000',
-      image: 'assets/h2.jpg',
-      type: 'Home',
-      room: '1 BHK',
-      tenant: 'Anyone',
-      tags: ['Lift', 'Parking', '24x7 Water'],
+      tags: ['Laundry', 'Security', 'Shared room'],
     },
   ];
 
   propertyTypes = [
-    { icon: 'bed', title: 'PG / Hostel' },
-    { icon: 'apartment', title: 'Apartments' },
-    { icon: 'chair', title: 'Private Room' },
-    { icon: 'groups', title: 'Shared Room' },
+    { title: 'PG and hostels', detail: 'Budget-friendly stays near colleges and offices.' },
+    { title: 'Independent homes', detail: 'Private houses for families and working professionals.' },
+    { title: 'Shared rooms', detail: 'Flexible sharing options with essential amenities.' },
   ];
 
-  popularCities = [
-    { name: 'Mumbai', image: 'assets/h2.jpg' },
-    { name: 'Pune', image: 'assets/h1.jpg' },
-    { name: 'Nagpur', image: 'assets/h3.jpg' },
-    { name: 'Nashik', image: 'assets/h2.jpg' },
-    { name: 'Thane', image: 'assets/h1.jpg' },
-    { name: 'Kolhapur', image: 'assets/h3.jpg' },
-    { name: 'Aurangabad', image: 'assets/h2.jpg' },
-    { name: 'Navi Mumbai', image: 'assets/h1.jpg' },
-  ];
-
-  testimonials = [
-    { name: 'Sneha K.', city: 'Pune', quote: 'Found a PG close to my college and spoke directly with the owner.' },
-    { name: 'Rohit M.', city: 'Mumbai', quote: 'Much easier to compare rent, deposit and amenities.' },
-    { name: 'Anjali S.', city: 'Thane', quote: 'The owner was responsive and the place was exactly as shown.' },
+  steps = [
+    { title: 'Search by city', detail: 'Start with the location, tenant preference, and sharing type.' },
+    { title: 'Compare listings', detail: 'Review rent, deposit, amenities, rules, and availability.' },
+    { title: 'Message owners', detail: 'Open a chat with the owner and move ahead confidently.' },
   ];
 }
