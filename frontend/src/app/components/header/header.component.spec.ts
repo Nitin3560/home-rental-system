@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { HeaderComponent } from './header.component';
 
@@ -12,7 +13,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ RouterTestingModule, BrowserAnimationsModule, MatToolbarModule, MatButtonModule ],
+      imports: [ RouterTestingModule, BrowserAnimationsModule, MatToolbarModule, MatButtonModule, MatIconModule ],
       declarations: [ HeaderComponent ]
     })
     .compileComponents();
